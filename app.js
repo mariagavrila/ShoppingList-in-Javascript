@@ -14,6 +14,7 @@ loadEventListeners();
 
 function loadEventListeners() {
 
+    document.addEventListener('DOMContentLoaded', getItems);
     inputItem.addEventListener('keypress', setInputValue);
     form.addEventListener('submit', addItem);
     items.addEventListener('click', removeItem);
@@ -21,6 +22,30 @@ function loadEventListeners() {
     items.addEventListener('click', checkItem);
     items.addEventListener('submit', confirmEdit);
     confirmBtn.addEventListener('click', removeAll);
+    inputItem.addEventListener('keyup', filterItems);
+}
+
+function getItems() {
+    let storageItems;
+    if(localStorage.getItem('items') === null) {
+        storageItems = [];
+    }else {
+        storageItems = JSON.parse(localStorage.getItem('items'));
+    }
+    storageItems.forEach(function(item) {
+        const li = document.createElement('li');
+        li.className = 'list-group-item';
+        //using the liElement function to render the li content
+        liElement(li, item);
+
+        items.appendChild(li);
+        //add a unique id to each label work with his own checkbox
+        i++;
+
+        countItems++; 
+
+        countLabel.innerText = countItems;
+    });
 }
 
 function addItem (e) {
@@ -37,12 +62,31 @@ function addItem (e) {
 
         items.appendChild(li);
 
-        inputItem.value = '';
-        countItems++; 
-    }
+        i++;
 
-    i++;
+        countItems++; 
+
+        countLabel.innerText = countItems;
+
+        storeItemToLocalStorage(inputItem.value);
+
+        inputItem.value = '';
+        
+    }
+    
     e.preventDefault();
+}
+
+function storeItemToLocalStorage(item) {
+    let items;
+    if(localStorage.getItem('items') === null) {
+        items = [];
+    }else {
+        items = JSON.parse(localStorage.getItem('items'));
+    }
+    items.push(item);
+
+    localStorage.setItem('items', JSON.stringify(items));
 }
 //on first key press remove the warning of empty input
 function setInputValue (e) {
@@ -51,9 +95,27 @@ function setInputValue (e) {
 function removeItem (e) {
 
     if(e.target.classList.contains('fa-trash-alt')) {
-        e.target.parentElement.parentElement.parentElement.remove();
+        let item = e.target.parentElement.parentElement.parentElement;
+        item.remove();
+        removeFromLocalStorage (item);
         countItems--;
+        countLabel.innerText = countItems;
     }
+}
+function removeFromLocalStorage (storageItem) {
+    let items;
+    if(localStorage.getItem('items') === null) {
+        items = [];
+    }else {
+        items = JSON.parse(localStorage.getItem('items'));
+    }
+    items.forEach(function(item, index){
+        if(storageItem.textContent === item) {
+            items.splice(index, 1);
+        }
+    });
+    localStorage.setItem('items', JSON.stringify(items));
+    
 }
 function editItem (e) {
 
@@ -106,6 +168,22 @@ function confirmEdit (e) {
 
     e.preventDefault();
 
+}
+
+//filter items
+function filterItems (e) {
+    const text = e.target.value.toLowerCase();
+
+    document.querySelectorAll('li').forEach(
+        function(item) {
+            const itemText =  item.firstElementChild.children[1].textContent;
+            if(itemText.toLowerCase().indexOf(text) != -1){
+                item.style.display = 'block';
+            }else {
+                item.style.display = 'none';
+            }
+        }
+    )
 }
 //add a line-through if checked the inputs checkbox
 //add transition effect and move checked elements down the list
@@ -170,7 +248,10 @@ function removeAll () {
         while(items.firstChild) {
             items.removeChild(items.firstChild);
         }
+    localStorage.clear();
 }
 //count all the items
 countLabel.innerText = countItems;
+
+
 
