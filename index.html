@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" >
+    <script src="https://kit.fontawesome.com/1ec8c7e068.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap" rel="stylesheet">
+
+
+    <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+
+</head>
+<body>
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-list fa-lg mr-2"></i>Shopping List
+                                    <div class="float-right">
+                                        <button type="button" class="btn btn-outline-light" id="clearAll" data-toggle="modal" data-target="#confirmModal">
+                                            <i class="fas fa-trash-alt mr-2 fa-lg"></i>Clean Up List
+                                        </button>
+                                    </div>
+                            </div>
+                            <div class="modal" id="confirmModal">
+                                    <div class="modal-dialog">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title">Are you sure?</h5>
+                                          <button type="button" class="close" data-dismiss="modal">
+                                            <span>&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <p><i class="fas fa-exclamation-triangle fa-2x"></i>
+                                            You will not be able to recover this items!
+                                        </p>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmBtn">Confirm</button>
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelBtn">Cancel</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                            </div>         
+                            <div class="card-body">
+                                <form id="list-form">
+                                   <div class="mb-2" id="input-group" >
+                                       <input type="text" class="form-control mb-1" id="item" placeholder="What do you need?">
+                                       <div class="invalid-input">
+                                        <i class="fas fa-exclamation-circle fa-lg" style="color: rgb(255, 123, 0);"></i>
+                                        Type something...
+                                    </div>
+                                   </div>
+                                    <button type="submit" id="submit" class="btn btn-outline-light px-4">Add</button>
+                                </form>
+                                <div class = "card mt-2">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div class="checkbox">
+                                                <input type="checkbox" id="checkbox" />
+                                                <label for="checkbox">List group item</label>
+                                            </div>
+                                            <div class="float-right">
+                                                <a href="#"><i class="fas fa-pencil-alt mr-3 "></i></a>
+                                                <a href="#" class="trash"><i class="fas fa-trash-alt mr-3"></i></a>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                                 <div class="checkbox">
+                                                    <input type="checkbox" id="checkbox1" />
+                                                    <label for="checkbox1" class="labelValue">List group item 1</label>
+                                                </div>
+                                                <div class="float-right">
+                                                        <a href="#"><i class="fas fa-pencil-alt mr-3"  ></i></a>
+                                                        <a href="#" class="trash"><i class="fas fa-trash-alt mr-3"></i></a>
+                                                </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" id="checkbox2" />
+                                                        <label for="checkbox2" class="labelValue">List group item 2</label>
+                                                    </div>
+                                                    <div class="float-right">
+                                                            <a href="#"><i class="fas fa-pencil-alt mr-3 "></i></a>
+                                                            <a href="#" class="trash"><i class="fas fa-trash-alt mr-3"></i></a>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" id="checkbox3" />
+                                                        <label for="checkbox3" class="labelValue">List group item 3</label>
+                                                    </div>
+                                                    <div class="float-right">
+                                                            <a href="#"><i class="fas fa-pencil-alt mr-3 " ></i></a>
+                                                            <a href="#" class="trash"><i class="fas fa-trash-alt mr-3"></i></a>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" id="checkbox4" />
+                                                        <label for="checkbox4" class="labelValue">List group item 4</label>
+                                                    </div>
+                                                    <div class="float-right">
+                                                             <a href="#"><i class="fas fa-pencil-alt mr-3 " ></i></a>
+                                                            <a href="#" class="trash"><i class="fas fa-trash-alt mr-3"></i></a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                        
+                            <div class="card-footer">
+                                    <h6 class="float-right">Total Items: <span class="label label-info ml-4"></span></h6>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+            <script src="liElement.js"></script>
+            <script src="app.js"></script>
+
+</body>
+</html>

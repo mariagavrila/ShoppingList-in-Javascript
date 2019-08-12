@@ -1,0 +1,120 @@
+.card-header {
+    background:#D64161FF;
+    font-size: 1.5rem;
+    color: white;
+}
+.card-body {
+   /* background: url('descarga.jpg');*/
+   background: #435E55FF;
+}
+.fas {
+    color: #435E55FF;
+    size: 1rem;
+}
+.far {
+    color: #435E55FF;
+    size: 1rem;
+}
+.far:hover {
+    color: #D64161FF;
+}
+.fa-pencil-alt {
+    color: #D64161FF;
+}
+.container {
+    font-family: 'Indie Flower', cursive;
+}
+.btn {
+    color: white;
+}
+#confirmButton:hover {
+    background: white;
+    border-color:white;
+
+}
+.modal-dialog {
+    border-style: solid;
+    border-color:  rgba(67, 94, 85, 0.829);
+    border-width: 10px;
+    border-radius: 5px;
+}
+.modal-header {
+    background: #D64161FF;
+    font-weight: 900;
+    color: white;
+}
+.fa-exclamation-triangle {
+    color:  rgb(255, 123, 0);
+}
+#confirmBtn {
+    background:  #D64161FF;
+    border-color :   #D64161FF;
+}
+#confirmBtn:hover {
+    background:  rgb(167, 50, 75);
+}
+#cancelBtn {
+    background:  #435E55FF;
+}
+#cancelBtn:hover {
+    background:  rgb(54, 73, 67);
+}
+
+#submit {
+    background: #D64161FF;
+}
+#submit:hover {
+    background: white;
+}
+
+.form-control:focus, .form-control:hover {
+    border-color: #D64161FF;
+    box-shadow: 0px 0px 10px 1px #D64161FF;
+    border-bottom-style: ridge;
+    color:#435E55FF;
+} 
+.invalid-input {
+    display: none;
+    color: rgb(255, 123, 0);
+    font-size: .9rem;
+}
+.line-t {
+    text-decoration: line-through;
+}
+.finishmove {
+    order: 1;
+}
+.list-group-item {
+    position: relative;
+    top: 0px;
+    transition: all .8s;
+    /* transition-delay: .5s; */
+    transition-timing-function: ease-in;
+}
+.moveli {
+    top: 75px;
+} 
+.moveliback {
+    top: -50px;
+    z-index: 0;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.list-group-item:last-child {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.list-group {
+    display: flex;
+    flex-direction: column;
+}
+.list-group-item:hover {
+    background-color: rgb(245, 245, 245);
+}
+.checkbox { 
+    display:inline-block;
+} 
+
