@@ -1,4 +1,7 @@
 const liElement = function (li, inputValue) {
+    function returnIElement(className) {
+        return `<i class=${className} ></i>`
+    }
 
     const div = document.createElement('div');
     div.className = 'checkbox';
@@ -7,8 +10,8 @@ const liElement = function (li, inputValue) {
     input.type = 'checkbox';
     input.id = `checkbox${i}`;
     div.appendChild(input);
-    
-    let labelFor = 5;
+
+
     const label = document.createElement('label');
     label.htmlFor = `checkbox${i}`;
     label.className = 'labelValue ml-1';
@@ -20,16 +23,17 @@ const liElement = function (li, inputValue) {
 
     const link = document.createElement('a');
     link.href = '#';
-    link.innerHTML = '<i class="fas fa-pencil-alt mr-4"></i>';
+    link2.innerHTML = returnIElement("fas fa-pencil-alt mr-4");
+
     div2.appendChild(link);
 
     const link2 = document.createElement('a');
     link2.className = 'trash';
     link2.href = '#';
-    link2.innerHTML = '<i class="fas fa-trash-alt mr-3"></i>';
+    link2.innerHTML = returnIElement("fas fa-trash-alt mr-3");
     div2.appendChild(link2);
 
     li.appendChild(div);
     li.appendChild(div2);
-    
 }
+
